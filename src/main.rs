@@ -122,18 +122,19 @@ fn help() {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let todos = read_todos(".todos");
+    let todos_path = ".todos";
+    let todos = read_todos(todos_path);
     // write_todos(".todos", todos);
     if args.len() > 1 {
         match args[1].as_str() {
             "add" | "a" => {
-                write_todos(".todos", add_todo(args, todos));
+                write_todos(todos_path, add_todo(args, todos));
             },
             "fin" | "f" => {
-                write_todos(".todos", fin_todo(args, todos));
+                write_todos(todos_path, fin_todo(args, todos));
             },
             "rem" | "r" | "del" | "d" => {
-                write_todos(".todos", rem_todo(args, todos));
+                write_todos(todos_path, rem_todo(args, todos));
             },
             "--help" | "-h" => {
                 help();
