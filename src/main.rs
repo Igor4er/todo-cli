@@ -18,7 +18,7 @@ fn get_file(path: &str) -> std::fs::File {
     .expect(format!("Не вдалось відкрити файл {}", path).as_str())
 }
 
-fn check_is_done(raw_todo: &str) -> bool {
+fn check_todo_is_done(raw_todo: &str) -> bool {
     if raw_todo.chars().next().unwrap() == '+' {
         true
     }
@@ -37,7 +37,7 @@ fn read_todos(path: &str) -> Vec<Todo> {
         if raw_todo.len() > 1 {
             let text = &raw_todo[1..raw_todo.len()];
             todos.push(
-                    Todo { is_done: check_is_done(raw_todo), text: text.to_string() }
+                    Todo { is_done: check_todo_is_done(raw_todo), text: text.to_string() }
                     );
         }
     }
@@ -56,7 +56,7 @@ fn get_write_file(path: &str) -> std::fs::File {
 
 fn write_todos(path: &str, todos: Vec<Todo>) {
     let mut todos_file = get_write_file(path);
-    let mut final_file_text = String::new();
+    let mut final_file_text = String::new();  // Буде записуватись в цю строку
     for todo in &todos {
         if todo.is_done {
             final_file_text.push_str("+");
