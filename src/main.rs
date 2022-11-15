@@ -56,30 +56,30 @@ fn get_write_file(path: &str) -> std::fs::File {
 
 fn write_todos(path: &str, todos: Vec<Todo>) {
     let mut todos_file = get_write_file(path);
-    let mut base_string = String::new();
+    let mut final_file_text = String::new();
     for todo in &todos {
         if todo.is_done {
-            base_string.push_str("+");
+            final_file_text.push_str("+");
         }
         else {
-            base_string.push_str("-");
+            final_file_text.push_str("-");
         }
-        base_string.push_str(todo.text.as_str());
-        base_string.push_str("\n");
+        final_file_text.push_str(todo.text.as_str());
+        final_file_text.push_str("\n");
     }
-    let _ = todos_file.write_all(base_string.as_bytes());
+    let _ = todos_file.write_all(final_file_text.as_bytes());
     print_todos(todos);
 }
 
 fn add_todo(args: Vec<String>, mut todos: Vec<Todo>) -> Vec<Todo>{
-    let mut bs = String::new();
+    let mut todo_text = String::new();
     let adds = &args[2..args.len()];
     for add in adds {
-        bs.push_str(add.as_str());
-        bs.push_str(" ");
+        todo_text.push_str(add.as_str());
+        todo_text.push_str(" ");
     }
     todos.push(
-            Todo { is_done: false, text: bs }
+            Todo { is_done: false, text: todo_text }
             );
     todos
 }
