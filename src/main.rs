@@ -76,10 +76,12 @@ fn add_todo(args: Vec<String>, mut todos: Vec<Todo>) -> Vec<Todo>{
     let adds = &args[2..args.len()];
     for add in adds {
         bs.push_str(add.as_str());
+        bs.push_str(" ");
     }
     todos.push(
             Todo { is_done: false, text: bs }
             );
+    println!("{:?}", todos);
     todos
 }
 
@@ -114,6 +116,8 @@ fn help() {
     println!("                              f   <номер>\n");
     println!("  Видалити todo               rem <номер>");
     println!("                              r   <номер>");
+    println!("                              del <номер>");
+    println!("                              d   <номер>");
     println!("\x1b[31m---------------------------------by-Ig4Er");
 }
 
@@ -129,7 +133,7 @@ fn main() {
             "fin" | "f" => {
                 write_todos(".todos", fin_todo(args, todos));
             },
-            "rem" | "r" => {
+            "rem" | "r" | "del" | "d" => {
                 write_todos(".todos", rem_todo(args, todos));
             },
             "--help" | "-h" => {
