@@ -117,7 +117,7 @@ fn help() {
     println!("                              r   <номер>");
     println!("                              del <номер>");
     println!("                              d   <номер>");
-    println!("\x1b[31m---------------------------------by-Ig4Er");
+    println!("\x1b[31m---------------------------------by-Ig4Er\x1b[37m");
 }
 
 fn main() {
