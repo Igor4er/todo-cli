@@ -81,7 +81,6 @@ fn add_todo(args: Vec<String>, mut todos: Vec<Todo>) -> Vec<Todo>{
     todos.push(
             Todo { is_done: false, text: bs }
             );
-    println!("{:?}", todos);
     todos
 }
 
