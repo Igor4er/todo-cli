@@ -107,8 +107,8 @@ fn rem_todo(args: Vec<String>, mut todos: Vec<Todo>) -> Vec<Todo> {
 }
 
 fn help() {
-    println!("Використання: todo-cli [ПАРАМЕТР] <аргумент>");
-    println!("Параметри:");
+    println!("Використання: todo-cli [КОМАНДА] <аргумент>");
+    println!("Команди:");
     println!("  Додати todo:                add <текст>");
     println!("                              a   <текст>\n");
     println!("  Відмітити todo виконаним:   fin <номер>");
